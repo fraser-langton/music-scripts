@@ -15,13 +15,18 @@ cd music-scripts
 brew install yt-dlp ffmpeg id3v2 libkeyfinder libsndfile fftw
 ```
 
-3. Add to your shell (zsh):
+3. Build the keyfinder CLI tool:
+```bash
+make keyfinder_cli
+```
+
+4. Add to your shell (zsh):
 ```bash
 echo 'source "$HOME/Music/music-scripts/music_functions.zsh"' >> ~/.zshrc
 source ~/.zshrc
 ```
 
-4. Configure your SoundCloud playlists by editing the `SC_PLAYLISTS` array in `music_functions.zsh`
+5. Configure your SoundCloud playlists by editing the `SC_PLAYLISTS` array in `music_functions.zsh`
 
 ## Usage
 

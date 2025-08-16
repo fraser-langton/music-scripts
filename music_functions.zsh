@@ -31,7 +31,7 @@ SC_PLAYLISTS=(
   # "https://soundcloud.com/toddterje/sets/todd-terje-remixes"
   # "https://soundcloud.com/ladytronica/sets/dark-disco"
 )
-SC_BASE_DIR="/Users/fraser.langton/Music/soundcloud"
+SC_BASE_DIR="$HOME/Music/soundcloud"
 SC_CACHE_DIR="$SC_BASE_DIR/CACHE"
 SC_PLAYLIST_DIR="$SC_BASE_DIR/playlists"
 SC_ARCHIVE_FILE="$SC_CACHE_DIR/downloaded.txt"
@@ -42,7 +42,7 @@ sc_sync() {
   url="${1:-https://soundcloud.com/fraser-langton/sets/tracks}"
   # Extract playlist name from URL (last part after /)
   playlist_name=$(basename "$url")
-  base_dir="/Users/fraser.langton/Music/soundcloud"
+  base_dir="$HOME/Music/soundcloud"
   target_dir="$base_dir/$playlist_name"
   archive_file="$target_dir/downloaded.txt"
   mkdir -p "$target_dir"
