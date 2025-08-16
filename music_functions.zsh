@@ -118,10 +118,11 @@ sc_analyze_keys() {
   echo "🎵 Analyzing keys for all SoundCloud tracks..."
   
   # Check if our libKeyFinder CLI tool is available
-  keyfinder_tool="/Users/fraser.langton/Music/keyfinder_cli"
+  script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  keyfinder_tool="$script_dir/keyfinder_cli"
   if [[ ! -f "$keyfinder_tool" ]]; then
     echo "⚠️  KeyFinder CLI tool not found at: $keyfinder_tool"
-    echo "   Make sure keyfinder_cli is compiled in your Music directory"
+    echo "   Make sure keyfinder_cli is available in the music-scripts directory"
     return 1
   fi
   
@@ -389,10 +390,11 @@ sc_delete_song() {
 
 # Main sync function that runs the full pipeline
 sc_sync_all() {
+  script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
   sc_sync_songs
   sc_analyze_keys
-  ./write_key_tags.py
-  ./write_playlist_tags.py
+  "$script_dir/write_key_tags.py"
+  "$script_dir/write_playlist_tags.py"
   wait
 }
 
