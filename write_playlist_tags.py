@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env uv run python
 import json
 from collections import defaultdict
 from pathlib import Path
@@ -26,7 +26,20 @@ def build_playlist_tag_map() -> Dict[str, str]:
             print(f"Warning: {playlist_file.name} contains null data")
             continue
             
-        playlist_name: str = playlist_file.stem
+        # Handle different JSON formats explicitly
+        if "youtube.com" in data.get("webpage_url", "") or "extractor" in data and "youtube" in data["extractor"].lower():
+            # YouTube format: use title directly
+            playlist_name: str = data.get("title", playlist_file.stem)
+        elif "soundcloud.com" in data.get("webpage_url", "") or "extractor" in data and "soundcloud" in data["extractor"].lower():
+            # SoundCloud format: use title directly  
+            playlist_name: str = data.get("title", playlist_file.stem)
+        else:
+            # Fallback: use filename
+            playlist_name: str = playlist_file.stem
+            
+        # Clean up playlist name for tagging (replace problematic characters)
+        playlist_name = playlist_name.replace("/", "_").replace("\\", "_")
+        
         for entry in data.get("entries", []):
             song_id: str = entry.get("id")
             if song_id:

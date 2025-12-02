@@ -5,22 +5,31 @@
 # SoundCloud sync configuration
 SC_PLAYLISTS=(
   # MINE
-  "https://soundcloud.com/fraser-langton/sets/boogie"
-  "https://soundcloud.com/fraser-langton/sets/bounce-inc"
-  "https://soundcloud.com/fraser-langton/sets/bunene"
-  "https://soundcloud.com/fraser-langton/sets/5am"
-  "https://soundcloud.com/fraser-langton/sets/lucky-thursday"
-  "https://soundcloud.com/fraser-langton/sets/sunset"
-  "https://soundcloud.com/fraser-langton/sets/ethereal"
-  "https://soundcloud.com/fraser-langton/sets/groovie"
-  "https://soundcloud.com/fraser-langton/sets/sing"
-  "https://soundcloud.com/fraser-langton/sets/ahhh-freak-shit"
-  "https://soundcloud.com/fraser-langton/sets/house-md"
-  "https://soundcloud.com/fraser-langton/sets/garage-party"
+  # "https://soundcloud.com/fraser-langton/sets/boogie"
+  # "https://soundcloud.com/fraser-langton/sets/bounce-inc"
+  # "https://soundcloud.com/fraser-langton/sets/bunene"
+  # "https://soundcloud.com/fraser-langton/sets/5am"
+  # "https://soundcloud.com/fraser-langton/sets/lucky-thursday"
+  # "https://soundcloud.com/fraser-langton/sets/sunset"
+  # "https://soundcloud.com/fraser-langton/sets/ethereal"
+  # "https://soundcloud.com/fraser-langton/sets/groovie"
+  # "https://soundcloud.com/fraser-langton/sets/sing"
+  # "https://soundcloud.com/fraser-langton/sets/ahhh-freak-shit"
+  # "https://soundcloud.com/fraser-langton/sets/house-md"
+  # "https://soundcloud.com/fraser-langton/sets/garage-party"
+
+  # Callum
+  # "https://soundcloud.com/calum_sim/sets/new-prog"
+  # "https://soundcloud.com/calum_sim/sets/reginalds-downfall"
+
+  # harry
+  # "https://soundcloud.com/harryjensen/sets/housey-stuff"
+  # "https://soundcloud.com/harryjensen/sets/hard-groove"
+  # "https://soundcloud.com/harryjensen/sets/lighter-techno"
 
   # RECORDS
-  # "https://soundcloud.com/t-amsterdam-dance-capital"
-  # "https://soundcloud.com/polyamor-berlin"
+  "https://soundcloud.com/t-amsterdam-dance-capital"
+  "https://soundcloud.com/polyamor-berlin"
 
   # OTHER
   # "https://soundcloud.com/andy-supre-829204750/sets/your-favourite-hard-rave"
@@ -392,7 +401,7 @@ sc_delete_song() {
 sc_sync_all() {
   script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
   sc_sync_songs
-  sc_analyze_keys
+    sc_analyze_keys
   "$script_dir/write_key_tags.py"
   "$script_dir/write_playlist_tags.py"
   wait
